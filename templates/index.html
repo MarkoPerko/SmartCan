@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCan</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+</head>
+<body>
+    <body>
+        <div class="min-h-screen bg-black z-0 pl-4">
+            <!-- navbar -->
+            <nav>
+                <div class="max-w-7x1 mx-auto px-4">
+                    <div class="flex justify-between">
+                        <div class="hidden md:flex"><img alt="Garbage" class="h-12 w-12 rounded-full pt-2 mx-auto"
+                                src="/static/logo1.png"
+                                width="150" height="70"></div>
+                        <div class="py-2 "><a href="/"
+                                class="text-purple-600 font-bold hover:underlinenav currentpage rounded-full">Home</a>
+                        </div>
+                        <div class="items-center space-x-3 hidden md:flex">
+                            <a class="py-2 px-3 text-indigo-200 rounded text-base 
+                 hover:underlinenav  font-bold transition duration-500" href="/garbage">Garbage</a>
+                            <a class="py-2 px-3 text-indigo-200 text-base rounded 
+                        hover:underlinenav font-bold transition duration-500" href="/projekt">O Projektu</a>
+                        </div>
+                        <div class="md:hidden flex items-center">
+                        </div>
+    
+                    </div>
+                </div>
+            </nav>
+            <!-- div section -->
+            <div class="pt-20">
+                <div class="flex inline-flex">
+                    <div class="bg-no-repeat z-30 mb-40 border-2 border-purple-600 content-center bg-cover bg-center overflow-hidden md:flex-row md:space-x-6 sm:p-12 md:space-y-0 max-w-3xl rounded-xl shadow-lg text-white"
+                        style="background-image: url(/static/bggrey.jpg);">
+                        <div>
+                            <div class="flex flex-col">
+    
+                                <h1 class="font-bold text-4xl tracking-wide">Pratite stanje vašeg spremnika</h1>
+                                <p class="pt-6 text-indigo-200 text-xl break-words">Stranica prati u stvarnom vremenu
+                                    podatke
+                                    vlažnosti,
+                                    temperature i popunjenosti pomoću dva senzora.</p>
+                                <p class="pt-2 text-indigo-200 text-xl break-words">Podatke možete pogledati pritiskom na
+                                    tipku
+                                    PRIKAŽI
+                                    PODATKE,
+                                    dok detaljniji opis podataka nalazi se na podstranici <a
+                                        class="hover:text-yellow-300 hover:underlinenav" href="/index"> Garbage</a>
+                                </p>
+    
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                    <div class="ml-32 z-20 mt-40 bg-no-repeat border-2 border-purple-600 content-center bg-cover 
+                    bg-center overflow-hidden md:flex-row md:space-x-6 sm:p-12 md:space-y-0 max-w-3xl rounded-xl shadow-lg text-white"
+                        style="background-image: url(/static/bggrey.jpg);">
+                        <div>
+                            <div class="flex flex-col">
+    
+                                <h1 class="font-bold text-4xl tracking-wide">Primajte obavjesti na mobitel</h1>
+                                <p class="pt-6 text-indigo-200 text-xl break-words">Spojite svoj mobitel kako bi ste mogli
+                                    pratiti u stvarnom vremenu stanje spremnika.</p>
+                                <p class="pt-2 text-indigo-200 text-xl break-words">Kako bi ste spojili mobitel potrebana
+                                    vam je PushBullet aplikacija u kojoj ćete dobivati obavjesti
+                                    kada je spremnik potrebno isprazniti
+                                </p>
+    
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+                <div class="bg-no-repeat z-10 border-2 border-purple-600 -mt-20 content-center bg-cover 
+                bg-center overflow-hidden md:flex-row md:space-x-6 sm:p-12 md:space-y-0 max-w-3xl rounded-xl shadow-lg text-white"
+                    style="background-image: url(/static/bggrey.jpg);">
+                    <div>
+                        <div class="flex flex-col">
+    
+                            <h1 class="font-bold text-4xl tracking-wide">Upoznajte arhitekturu projekta</h1>
+                            <p class="pt-6 text-indigo-200 text-xl break-words">Saznajte koji senzori se koriste za pračenje
+                                popunjenosti, temperature i vlažnosti.</p>
+                            <p class="pt-2 text-indigo-200 text-xl break-words">Način na koji su spojeni senzori s
+                                Raspberry Pi, koju vrstu signala šalju i sl., detaljnije možete pročitati na stranici <a
+                                    class="hover:text-yellow-300 hover:underlinenav" href="/index.html"> O projektu</a>
+    
+                            </p>
+    
+                        </div>
+                    </div>
+    
+                </div>
+    
+            </div>
+            <!-- button -->
+            <div class="grid gap-8 mt-4 items-start justify-center z-10">
+                <div class="relative group -bottom-0">
+                    <div class="absolute blurmain -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg opacity-50 
+                        group-hover:opacity-100 transition  group-hover:duration-200 duration-1000">
+                    </div>
+                    <button onclick="showDiv()"
+                        class=" relative px-7 py-4 bg-black rounded-xl leading-none flex items-center">
+                        <span class="flex ites-center space-x-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-pink-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                            </svg>
+                            <span id="spn1"
+                                class="text-white group-hover:text-red-300  transition  group-hover:duration-200 duration-1000 pr-2">PRIKAŽI</span>
+                        </span>
+                        <span id="spn2"
+                            class="text-white group-hover:text-red-300 transition  group-hover:duration-200 duration-1000">PODATKE</span>
+                    </button>
+                </div>
+            </div>
+            <!-- dropdown -->
+            <div class="grid gap-8 py-4 items-start justify-center">
+                <div id="divshow" class="relative group invisible z-10">
+                    <div class="absolute blurmain -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg opacity-100 
+                         transition  group-hover:duration-200 duration-1000">
+                    </div>
+                    <div class="relative px-7 py-2 bg-black rounded-lg leading-none flex items-center">
+                        <span id="spnpop" class="text-white px-2">Popunjenost: 25%</span>
+                        <span id="spntem" class="text-white px-2"> Temperatura: 25%</span>
+                        <span id="spnhum" class="text-white px-2"> Vlaznost: 25%</span>
+                    </div>
+    
+                </div>
+            </div>
+    
+        </div>
+        <!-- 3diva -->
+        <section class="bg-gray-100 relative z-0">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-warp">
+                    <div class="lg:-mt-16 -mt-12 w-full md:w-4/12 px-8 text-center">
+                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                            <div class="px-4 py-5 flex-auto">
+                                <div
+                                    class="text-white p-3 text-center inline-flex items-center w-12 h-12 mb-5 justify-center rounded-full bg-black">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 h-12 rounded-full text-blue-400"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                                    </svg>
+    
+                                </div>
+                                <h1 class="text-2xl font-bold">Pračenje popunjenosti</h1>
+                                <p class="mt-2 mb-4 text-gray-600">Popunjenost se prati pomoću ultrazvučnog senzora
+                                    udaljenosti.
+                                    Senzor ima preciznost do 3mm te će vas obavjesiti svaki put kada je spremnik popunjen
+                                    80% i više da ga ispraznite. Popunjenost je podjeljena u tri razine: zadovoljavajuća,
+                                    optimalna i neoptimalna.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:-mt-8 -mt-4 w-full md:w-4/12 px-8 text-center">
+                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                            <div class="px-4 py-5 flex-auto">
+                                <div
+                                    class="text-white p-3 text-center inline-flex items-center w-12 h-12 mb-5 justify-center rounded-full bg-black">
+                                    <img src="/static/tmp-svg.svg" class="rounded-full">
+    
+                                </div>
+                                <h1 class="text-2xl font-bold">Pračenje temperature</h1>
+                                <p class="mt-2 mb-4 text-gray-600">Temperatura se prati pomoću digitalnog senzora za
+                                    mjerenje vlažnosti i temperature.Temperatura je podjeljena u tri razine:
+                                    zadovoljavajuća,
+                                    optimalna i neoptimalna. Za svaku razinu ispisati će se odgovarajuća poruka o mogućnosti
+                                    razvoja bakterija i mikroba točnije za razvoj kojih bakterija je pogodna trenutna
+                                    temperatura i koji je stupanj opasnosti.
+    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+    
+    
+    
+    
+                    <div class="lg:-mt-16 -mt-12 w-full md:w-4/12 px-8 text-center">
+                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                            <div class="px-4 py-5 flex-auto">
+                                <div
+                                    class="text-white p-3 text-center inline-flex items-center w-12 h-12 mb-5 justify-center rounded-full bg-black">
+                                    <img src="/static/drop.svg" class="rounded-full">
+    
+                                </div>
+                                <h1 class="text-2xl font-bold">Pračenje vlažnosti</h1>
+                                <p class="mt-2 mb-4 text-gray-600">Vlažnost se prati pomoću digitalnog senzora za
+                                    mjerenje vlažnosti i temperature.Temperatura je podjeljena u tri razine:
+                                    zadovoljavajuća,
+                                    optimalna i neoptimalna. Pomoću razina vlažnosti ispisivati će se koliko je koja razina
+                                    vlažnosti pogodna za razvoj bakterija.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+            </div>
+        </section>
+        <script>
+            var Vlaznostt = '{{ humidity }}';
+            var popunjeno = '{{ distance }}';
+            var tempr = '{{ temperature }}';
+            var showdiv = false;
+    
+            //document.getElementById("divshow").classList.toggle("visible");
+            function showDiv() {
+                if (showdiv === false) {
+                    document.getElementById("spnpop").innerHTML = "Popunjenost: " + popunjeno + " %";
+                    document.getElementById("spntem").innerHTML = "Temperatura: " + tempr + " °C";
+                    document.getElementById("spnhum").innerHTML = "Vlaznost: " + Vlaznostt + " %";
+                    document.getElementById("spn1").innerHTML = "SAKRIJ";
+                    $('#divshow').css({ 'visibility': 'visible' });
+                    showdiv = true;
+                }
+                else {
+                    $('#divshow').css({ 'visibility': 'hidden' });
+                    document.getElementById("spn1").innerHTML = "PRIKAŽI";
+                    showdiv = false;
+                }
+    
+            }
+        </script>
+</body>
+</html>

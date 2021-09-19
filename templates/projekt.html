@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCan</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+</head>
+<body>
+    <div class="min-h-screen bg-black z-0 pl-4">
+        <!-- navbar -->
+        <nav>
+            <div class="max-w-7x1 mx-auto px-4">
+                <div class="flex justify-between">
+                    <div class="hidden md:flex"><img alt="Garbage" class="h-12 w-12 rounded-full pt-2 mx-auto"
+                            src="/static/logo1.png"
+                            width="150" height="70"></div>
+                    <div class="py-2 "><a href="/"
+                            class="text-indigo-200 font-bold hover:underlinenav rounded-full">Home</a>
+                    </div>
+                    <div class="items-center space-x-3 hidden md:flex">
+                        <a class="py-2 px-3 text-indigo-200 rounded text-base 
+             hover:underlinenav  font-bold transition duration-500" href="/garbage">Garbage</a>
+                        <a class="py-2 px-3 currentpage text-base rounded 
+                    hover:underlinenav font-bold transition duration-500" href="/projekt">O Projektu</a>
+                    </div>
+                    <div class="md:hidden flex items-center">
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+        <!--HC-SR04-->
+        <div class="rounded overflow-hidden border-4 border-purple-600 shadow-lg rounded-xl bg-white bg-gray-300">
+            <img class="w-full h-48 border-b-4 border-black" src="/static/senzor.jpg" alt="HC-SR04">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">HC-SR04 ultrazvučni Senzor</div>
+                <p class="text-gray-700 text-base">
+                    Slika prikazuje ultrazvučni senzor udaljenosti HC-SR04. Ovo je ekonomični senzor koji pruža
+                    beskontaktne mjerne funkcije, može mjeriti udaljenosti od 2 do 400cm s preciznošću
+                    do 3mm. HC-SR04 modul uključuje ultrazvučni odašiljač, prijamnik i upravljački krug. HC-SR04 ima
+                    pinove za VCC, Trigger, Echo i Ground. Koristili
+                    smo ga kako bi mjerili postatak popunjenosti spremnika.
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 ">#HC-SR04</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#ultrazvučni
+                    senzor</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#2cm-400cm</span>
+            </div>
+        </div>
+        <!--DHT22-->
+        <div class="rounded overflow-hidden border-4 border-purple-600 shadow-lg rounded-xl bg-white bg-gray-300">
+            <img class="w-full h-48 border-b-4 border-black" src="/static/DHT22_pins.jpg" alt="DHT22">
+            <div class="px-6 py-4 ">
+                <div class="font-bold text-xl mb-2">DHT22</div>
+                <p class="text-gray-700 text-base">
+                    DHT22 je digitalni senzor temperature i vlažnosti. Koristi kapacitivni senzor vlažnosti i
+                    termistor za mjerenje okolong zraka te izbacuje digitalni signal na podatkovni(data) pin.
+                    Jednostavan je za korištenje jer podatke ispisuje u digitalnom obliku, pa nije potrebna dodatna
+                    pretvorba podataka kao kod HC-SR04 senzora. Podatke očitava svake dvije sekunde.
+                    Koristili smo ga kako bi korisnici mogli vidjeti vlažnost i temperaturu spremnika koji su bitni
+                    čimbenici za razvoj bakterija i mikroba.
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#digitalni
+                    senzor</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#temperatura</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#vlažnost</span>
+            </div>
+        </div>
+
+        <!--Raspberrypi-->
+        <div class="rounded overflow-hidden border-4 border-purple-600 shadow-lg rounded-xl bg-white bg-gray-300">
+            <img class="w-full h-48 border-b-4 border-black" src="/static/pi4b.png" alt="Forest">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">Raspberry Pi 4 Model B</div>
+                <p class="text-gray-700 text-base">
+                    Raspberry Pi 4 Model B u prodaju je izašao u lipnju 2019. Koristi četverojezgreni ARM Crotex-A72
+                    procesor s 1,5 GHz, 802.11ac Wi-Fi, Bluetooth 5, gigabit Ethernet,
+                    dva 2.0 i dva 3.0 USB priključka, dolazi u varijantama od 2 do 8 GB RAM memeorije te ima podršku
+                    za dva monitora putem mikro HDMI-a razlučivosti do 4K. U ovom projektu koristili smo ga kako bi
+                    očitali podatke sa senzora, ali i razvili cijeli projekt na sustavu Raspberry Pi-a.
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Raspberry
+                    Pi 4</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Model
+                    B</span>
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Operativni
+                    sustav</span>
+            </div>
+        </div>
+        <!--Breadboard-->
+        <div class="rounded overflow-hidden border-4 border-purple-600 shadow-lg rounded-xl bg-white bg-gray-300">
+            <img class="w-full h-48 border-b-4 border-black" src="/static/breadboard.jpg" alt="Forest">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">Adafruit 64- razvodna kutija</div>
+                <p class="text-gray-700 text-base">
+                    Adafruit 64 razvodna kutija koristi se za manje projekte. Dimenzije kutije su 5,5 cm x 8,5cm,
+                    težina 39g. Dolazi sa dvostrukom trakom
+                    u sredini i dvije vodilice s obje strane. Koristili smo ju kako bi na nju spojili senzore, te
+                    odgovarajuće pin-ove oba senzora spojili s Rasspbery Pi-om.
+                    Za senozre smo morali koristiti otpornike kako bi struju senzora doveli na odgovarajuću za
+                    Raspberry Pi.
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <span
+                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Eksperimentalna pločica
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5">
+        <!--HC-SR04_to_Pi-->
+        <div class="rounded overflow-hidden border-4 border-purple-600 shadow-lg rounded-xl bg-white bg-gray-300">
+            <img class="w-full border-b-4 border-black" src="/static/hcpi.png" alt="HC-SR04" style="height: 500px;">
+            <div class="px-4 py-4">
+                <p class="text-gray-700 text-base">
+                    Spajanje HC-SR04 senzora s Raspberry Pi pomoću eksperimentalne pločice
+                </p>
+            </div>
+        </div>
+        <!--DHT22_to_pi-->
+        <div class="rounded overflow-hidden border-4 border-purple-600 shadow-lg rounded-xl bg-white bg-gray-300">
+            <img class="w-full border-b-4 border-black" src="/static/dhtpi.png" alt="DHT22" style="height: 500px;">
+            <div class="px-4 py-4 ">
+                <p class="text-gray-700 text-base">
+                    Spajanje DHT22 senzora s Raspberry Pi pomoću eksperimentalne pločice
+                </p>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="60" >
+    <title>SmartCan</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>  
+        var popunjenost= '{{ distance }}';
+        var temperatura = '{{temperature}}';
+        var vlaznost = '{{humidity}}';
+        </script>
+        <style>
+        .collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+}
+        </style>
+</head>
+<body>
+    <div class="min-h-screen bg-black z-0 pl-4">
+        <nav>
+            <div class="max-w-7x1 mx-auto px-4">
+                <div class="flex justify-between">
+                    <div class="hidden md:flex"><img alt="Garbage" class="h-12 w-12 rounded-full pt-2 mx-auto"
+                            src="/static/logo1.png"
+                            width="150" height="70"></div>
+                    <div class="py-2 "><a href="/"
+                            class="text-indigo-200 font-bold  hover:underlinenav rounded-full">Home</a>
+                    </div>
+                    <div class="items-center space-x-3 hidden md:flex">
+                        <a class="py-2 px-3 text-purple-600 rounded text-base 
+                 hover:underlinenav currentpage font-bold transition duration-500" href="/garbage">Garbage</a>
+                        <a class="py-2 px-3 text-indigo-200 text-base rounded 
+                        hover:underlinenav font-bold transition duration-500" href="/projekt">O Projektu</a>
+                    </div>
+                    <div class="md:hidden flex items-center">
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+    <div
+    class="bg-no-repeat border-2 border-purple-600 content-center pt-12 content-center flex bg-cover bg-center flex-col space-y-6 overflow-hidden md:flex-row md:space-x-6 sm:p-12 md:space-y-0 max-w-3xl p-8 rounded-xl shadow-lg text-white" style="background-image: url(/static/bggrey.jpg);">
+    <div class="flex flex-col justify-between space-y-8 relative z-10">
+        <div>
+            <h1 class="font-bold text-4xl tracking-wide">Trenutno stanje spremnika</h1>
+            <p class="pt-12 text-indigo-200 text-xl">Temperatura: <span class="font-bold"><script type="text/javascript">document.write(temperatura)</script> °C</span></p>
+            <p class="pt-2 text-indigo-200 text-xl">Vlažnost: <span class="font-bold"><script type="text/javascript">document.write(vlaznost)</script> %</span></p>
+            <p class="pt-2 text-indigo-200 text-xl">Popunjenost: <span class="font-bold"><script type="text/javascript">document.write(popunjenost)</script> %</span></p>
+        </div>
+    </div>
+</div>
+
+<p class="pt-32 ml-16 text-white">Upute o optimalnim uvijetima(ovisno o boji označava slijedeće): <span class="font-bold" style="color:red;"> Nije
+        optimalno,
+    </span>
+    <span class="font-bold" style="color:orange;"> Zadovoljavajuće, </span>
+    <span class="font-bold" style="color:green;"> Optimalno </span>
+</p>
+<div class="py-4 ml-16">
+    <button type="button" id="colpop" class="collapsible max-w-3xl block rounded-lg mb-1 flex items-center justify-between"><span> Popunjenost
+        spremnika</span>
+        <span id="spnp" class="font-bold text-white"></span>
+    </button>
+        <div class="content text-white max-w-3xl mb-1 border-2 border-purple-600 rounded-xl">
+            <p id="ppop"></p>
+        </div>
+    <button type="button" id="coltemp" class="collapsible max-w-3xl block rounded-lg mb-1 flex items-center justify-between"><span>Temperatura
+        spremnika</span>
+        <span id="spnt" class="font-bold"> </span>
+    </button>
+        <div class="content text-white max-w-3xl mb-1 border-2 border-purple-600 rounded-xl">
+            <p id="ptemp"></p>
+        </div>
+    <button type="button" id="colh" class="collapsible max-w-3xl block flex rounded-lg mb-1 justify-between items-center" ><span> Vlažnost spremnika
+    </span>
+    <span id="spnv" class="font-bold"></span>
+    </button>
+    <div class="content text-white max-w-3xl mb-1 border-2 border-purple-600 rounded-xl">
+        <p id="pvlaz"></p>
+    </div>
+ </div>
+</div>
+ <script type="text/javascript">
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    document.getElementById("spnp").innerHTML = popunjenost + " %";
+        document.getElementById("spnt").innerHTML = temperatura + " °C";
+        document.getElementById("spnv").innerHTML = vlaznost + " %";
+    if (vlaznost >= 60) {
+        $('#colh').css({ 'background-color': 'red' });
+        $("#pvlaz").replaceWith("Vlažnost je veca od 60%, ovo može dovesti do povečanog razvoja bakterija. Vlažnost manja od 60% smanjuje reprodukciju bakterija.");
+    }
+    else if (vlaznost > 20 && vlaznost <= 59) {
+        $('#colh').css({ 'background-color': 'orange' });
+        $("#pvlaz").replaceWith("Vlažnost je između 21-59% u ovim uvjetima reprodukcija bakterija je umjerena, vlažnost iznad 60% povećava reprodukciju bakterija. Optimalno bi bilo održavati vlažnost što manjom, ali ne i većom od 60%, dok vlažnost manja od 20% slabo podržava reprodukciju bakterija te je iz tog razloga najoptimalnija.");
+    }
+    else {
+        $('#colh').css({ 'background-color': 'green' });
+        $("#pvlaz").replaceWith("Vlažnost je ispod 21%, ova razina vlažnosti nije optimalna za reprodukciju većine bakterija.");
+    }
+    if (temperatura >= 46) {
+        $('#coltemp').css({ 'background-color': 'red' });
+        $("#ptemp").replaceWith("Temperatura je veća od 45°C, ovo su uvjeti pogodni za razvoj termofilnih i hipertermofilnih bakterija.");
+    }
+    else if (temperatura > 20 && temperatura <= 45) {
+        $('#coltemp').css({ 'background-color': 'orange' });
+        $("#ptemp").replaceWith("Temperatura je između 21C i 45°C, uvjeti su pogodni za razvoj aerobno mezofilnih bakterija.");
+    }
+    else {
+        $('#coltemp').css({ 'background-color': 'green' });
+        $("#ptemp").replaceWith("Temperatura je manja ili jednaka 20°C, ovo su uvjeti pogodni za razvoj psihrofilnih bakterija.");
+    }
+    if (popunjenost >= 80) {
+        $('#colpop').css({ 'background-color': 'red' });
+        $("#ppop").replaceWith("popunjenost spremnika je veća od 80%, potrebno ga je isprazniti.");
+    }
+    else if (popunjenost > 30 && popunjenost <= 79) {
+        $('#colpop').css({ 'background-color': 'orange' });
+        $("#ppop").replaceWith("Spremnik je popunjen između 31% i 79%, moguće ga je isprazniti, ali nije još kritično popunjen.");
+    }
+    else {
+        $('#colpop').css({ 'background-color': 'green' });
+        $("#ppop").replaceWith("Spremnik je popunjen 30% ili manje. Nije ga potrebno izprazniti.");
+    }
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+
+    </script>
+</body>
+</html>
